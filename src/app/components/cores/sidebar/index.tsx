@@ -10,7 +10,7 @@ const listmenu = [
 
 function Sidebar(){
     return(
-        <section className="px-3 py-2 bg-teal-200 h-[100vh]">
+        <section className="px-3 py-2 bg-teal-200 h-full">
             <div className="pb-3">
             <h1 className="text-3xl font-bold text-green-500 text-center">Logo</h1>
             </div>
