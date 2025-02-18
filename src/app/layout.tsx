@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/app/components/cores/sidebar";
-
+import Header from "./components/cores/header";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,11 +28,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+
         <div className='grid grid-cols-5'>
         <div className="col-span-1">
           <Sidebar/>
         </div>
         <div className="col-span-4">
+        <div>
+        <Header/>
+        </div>
           {children}
         </div>
         </div>
