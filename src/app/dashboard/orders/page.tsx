@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoMdSearch } from "react-icons/io";
 import { MdArrowDropDown } from "react-icons/md";
-import OrderTable from '../components/orders/Table';
+import OrderTable from '../../components/orders/Table';
 import Link from 'next/link';
 
 const Orders = () => {
@@ -19,7 +19,7 @@ const Orders = () => {
         <summary className="btn m-1 bg-green-700 text-white rounded-3xl">Create Order<MdArrowDropDown className="text-xl" /></summary>
         <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
             <li>
-              <Link href={"/orders/order"}>
+              <Link href={"/dashboard/orders/order"}>
               Purchase order
               </Link>
             </li>

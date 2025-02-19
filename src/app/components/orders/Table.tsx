@@ -15,16 +15,16 @@ const [data] = useState([
     <div>
         <div className="grid grid-flow-col grid-cols-12 mt-12 gap-4 items-center">
             <div className="col-span-6">
-            <input type="number" defaultValue={0} placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+            <input type="number"  placeholder="Type here" className="input input-bordered w-full max-w-xs" />
             </div>
             <div className="col-span-2">
-                <input type='number' defaultValue={0} placeholder="All Type" className="input input-bordered w-full max-w-xs"></input>
+                <input type='number'  placeholder="All Type" className="input input-bordered w-full max-w-xs"></input>
             </div>
             <div className="col-span-2">
-                <input type='number' defaultValue={0} placeholder="All Status" className="input input-bordered w-full max-w-xs"></input>
+                <input type='number'  placeholder="All Status" className="input input-bordered w-full max-w-xs"></input>
             </div>
             <div className="col-span-1">
-                <input type='number' defaultValue={0} placeholder="" value={20} className="input input-bordered w-full max-w-xs"></input>
+                <input type='number'  placeholder="" className="input input-bordered w-full max-w-xs"></input>
             </div>
             <div className="col-span-1">
                 1-3 data

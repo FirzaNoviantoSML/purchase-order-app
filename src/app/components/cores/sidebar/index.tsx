@@ -7,11 +7,11 @@ import Link from "next/link";
 
 const listmenu = [
     {href:'/',name:"Home", icon:<GoHomeFill />},
-    {href:'/supliers-catalogue',name:"Supliers Catalogue", icon:<GoHomeFill />},
-    {href:'/orders',name:"Order", icon:<GoHomeFill />},
-    {href:'/warehouse',name:"Warehouse", icon:<GoHomeFill />},
-    {href:'/finance',name:"Finance", icon:<GoHomeFill />},
-    {href:'/order',name:"Order", icon:<GoHomeFill />}
+    {href:'/dashboard/supliers-catalogue',name:"Supliers Catalogue", icon:<GoHomeFill />},
+    {href:'/dashboard/orders',name:"Order", icon:<GoHomeFill />},
+    {href:'/dashboard/warehouse',name:"Warehouse", icon:<GoHomeFill />},
+    {href:'/dashboard/finance',name:"Finance", icon:<GoHomeFill />},
+    {href:'/dashboard/order',name:"Order", icon:<GoHomeFill />}
 ]
 
 function Sidebar(){

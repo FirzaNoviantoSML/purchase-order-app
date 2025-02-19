@@ -1,5 +1,5 @@
-import Card from "./components/home/card";
-import Chart from "./components/home/chart";
+import Card from "../components/home/card";
+import Chart from "../components/home/chart";
 
 export default function Home() {
 const listCard = [
