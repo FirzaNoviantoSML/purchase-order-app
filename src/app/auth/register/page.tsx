@@ -8,21 +8,26 @@ import { authRegisterSchema } from '@/app/features/auth/register/schemas/authReg
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import Link from 'next/link';
+import { useState } from 'react';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Register = () => {
-
+const [isLoading, setIsLoading] = useState<boolean>(false)
   const handleSubmit = async (
     {name,email,password,role} :{name:string,email:string,password:string,role:string}
   ) => {
+    setIsLoading(true)
     try {
      const response =  await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
         {
           name,password,email,role
         })
         toast.success(response.data.message)
+        setIsLoading(false)
       
     } catch (error:any) {
      toast.error(error?.response?.data?.message || 'Something Went Wrong!')
+     setIsLoading(false)
     }
   }
 
@@ -52,6 +57,7 @@ const Register = () => {
                     )
                   }
                   >
+                    {({values}) => (
                     <Form>
                     <label className="input input-bordered flex items-center gap-2 mb-2 rounded-3xl">
                 <MdOutlineEmail />
@@ -74,7 +80,19 @@ const Register = () => {
                 <option value="MANAGER" >Manager</option>
                 </Field>
                 <ErrorMessage name='role' className='text-red-700' component={'div'}/>
-                <button type='submit' className="btn btn-success w-full text-white rounded-full mb-2">Register</button>
+                {
+                                        values.email === "" || values.password === "" || values.name === "" || values.role === ""  || isLoading   ?
+                                        <button disabled type='submit' className="btn btn-success w-full text-white rounded-full mb-2">
+                                            {
+                                                isLoading ?
+                                                <AiOutlineLoading3Quarters className=" text-blue-500 animate-spin" />
+                                                :
+                                                ""
+                                            }
+                                            Register</button>
+                                        :
+                                        <button type='submit' className="btn btn-success w-full text-white rounded-full mb-2">Login</button>
+                                    }
                 <div className='flex justify-center mt-6'>
                    {"Already have an account? "} 
                     <Link href={"/auth/login"} className='text-green-700'>
@@ -82,6 +100,7 @@ const Register = () => {
                     </Link>
                    </div>
                     </Form>
+                    )}
                 </Formik>
         </div>
     </div>

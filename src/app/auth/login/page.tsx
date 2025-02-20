@@ -9,13 +9,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import Link from 'next/link';
 import { redirect } from "next/navigation";
 import { useState } from 'react';
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 const Login = () => {
 const [isRedirect,setIsRedirect] = useState<boolean>(false)
-
+const [isLoading, setIsLoading] = useState<boolean>(false)
     const handleLogin = async (
         {email,password} :{email:string,password:string}
+        
       ) => {
         console.log("trigger")
+        setIsLoading(true)
         try {
         const response =  await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`,{
             email,password
@@ -32,6 +36,7 @@ const [isRedirect,setIsRedirect] = useState<boolean>(false)
           
         } catch (error:any) {
          toast.error(error?.response?.data?.message || 'Something Went Wrong!')
+         setIsLoading(false)
         }
       }
 
@@ -60,7 +65,8 @@ const [isRedirect,setIsRedirect] = useState<boolean>(false)
                     )
                   }
                   >
-                <Form>
+                {({values}) => (
+                    <Form>
                     <label className="input input-bordered flex items-center gap-2 mb-2 rounded-3xl">
                     <MdOutlineEmail />
                     <Field name="email" type="text" className="grow" placeholder="Email" />
@@ -71,8 +77,21 @@ const [isRedirect,setIsRedirect] = useState<boolean>(false)
                     <Field name="password" type="password" className="grow" placeholder="Password" />
                     </label>
                     <ErrorMessage name='password' className='text-red-700' component={'div'}/>
-                    <button type='submit' className="btn btn-success w-full text-white rounded-full mb-2">Login</button>
+                    {
+                        values.email === "" || values.password === "" || isLoading   ?
+                        <button disabled type='submit' className="btn btn-success w-full text-white rounded-full mb-2">
+                            {
+                                isLoading ?
+                                <AiOutlineLoading3Quarters className=" text-blue-500 animate-spin" />
+                                :
+                                ""
+                            }
+                            Login</button>
+                        :
+                        <button type='submit' className="btn btn-success w-full text-white rounded-full mb-2">Login</button>
+                    }
                 </Form>
+                )}
                 </Formik>
                 <div className='flex justify-center mt-6'>
                    {"Dont have account ? "} 
